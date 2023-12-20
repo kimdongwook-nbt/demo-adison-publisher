@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  db:
+    image: mysql:8.0.31
+    restart: always
+    volumes:
+      - 'data-db:/var/lib/mysql'
+    environment:
+      - MYSQL_ROOT_PASSWORD=qwerqwer!
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=qwerqwer!
+    ports:
+      - "3310:3306"
+
+volumes:
+  data-db:
+    driver: "local"
