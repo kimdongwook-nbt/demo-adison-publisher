@@ -175,6 +175,8 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.6)
     rubyzip (2.3.2)
+    seedbank (0.5.0)
+      rake (>= 10.0)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   mysql2 (~> 0.5.4)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  seedbank (~> 0.5.0)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
