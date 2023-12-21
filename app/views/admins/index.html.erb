@@ -1,0 +1,9 @@
+<h1>Admin List</h1>
+
+<ul>
+  <% @admins.each do |admin| %>
+    <li>
+      <%= "#{admin.email} - #{admin.name}" %>
+    </li>
+  <% end %>
+</ul>
