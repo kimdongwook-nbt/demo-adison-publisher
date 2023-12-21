@@ -1,9 +1,8 @@
-<h1>Admin List</h1>
+<h1>#Admin</h1>
 
+<h3>Admin Emails</h3>
 <ul>
   <% @admins.each do |admin| %>
-    <li>
-      <%= "#{admin.email} - #{admin.name}" %>
-    </li>
+    <%= admin.email %>
   <% end %>
 </ul>
