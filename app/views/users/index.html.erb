@@ -1,0 +1,15 @@
+<h1>#Users</h1>
+
+<a href="/users/new">Enroll User</a>
+
+<p><%= "Empty.." unless @users.present? %></p>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.email, user %>
+    </li>
+  <% end %>
+</ul>
+
+<a href="/main">Main</a>

@@ -6,3 +6,7 @@
     <%= admin.email %>
   <% end %>
 </ul>
+
+<a href="/users">Users</a>
+<br>
+<%= link_to "Logout", destroy_admin_session_path, method: :delete %>
