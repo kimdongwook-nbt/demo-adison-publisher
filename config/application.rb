@@ -18,5 +18,9 @@ module DemoAdisonPublisher
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.logger = Logger.new(STDOUT)
+    config.log_level = :debug
+    config.active_record.query_log_tags_enabled = true
   end
 end
