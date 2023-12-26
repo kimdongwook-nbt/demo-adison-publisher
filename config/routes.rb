@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   # get   '/users/:id', to: 'users#show'
   # post  '/users',     to: 'users#create'
 
+  namespace :api do
+    namespace :offerwall do
+      post "completeCampaign", to: "offerwall#complete_campaign"
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "/main", to: "main#index"
   root "main#index"
