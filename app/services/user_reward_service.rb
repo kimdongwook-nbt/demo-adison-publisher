@@ -26,7 +26,8 @@ class UserRewardService
       reward: reward.to_i,
       language: language,
       country: country,
-      issued_key: issued_key
+      issued_key: issued_key,
+      issued_reward_at: Time.zone.now
     )
 
     issued_key

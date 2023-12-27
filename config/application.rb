@@ -25,5 +25,6 @@ module DemoAdisonPublisher
     # config.active_record.query_log_tags_enabled = true
 
     config.autoload_paths << "#{Rails.root}/lib"
+    config.time_zone = "Asia/Seoul"
   end
 end
