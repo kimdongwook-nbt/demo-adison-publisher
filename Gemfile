@@ -18,8 +18,10 @@ gem "mysql2", "~> 0.5.4"
 # === Seedbank === #
 gem 'seedbank', '~> 0.5.0'
 
-# === Devise === #
+# === Devise, Rolify, CacCanCan === #
 gem 'devise'
+gem 'rolify'
+gem 'cancancan'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

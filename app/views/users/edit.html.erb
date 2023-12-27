@@ -1,15 +1,11 @@
-<h2>Enroll User</h2>
+<h2>사용자 정보 수정</h2>
 
 <%= form_with model: @user do |form| %>
+
   <table>
     <tr>
       <td>Email</td>
-      <td><%= form.text_field :email %></td>
-      <td>
-        <% @user.errors.full_messages_for(:email).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </td>
+      <td><%= @user.email %></td>
     </tr>
 
     <tr>
@@ -21,11 +17,25 @@
         <% end %>
       </td>
     </tr>
+
+    <tr>
+      <td>UId hash</td>
+      <td><%= @user.uid_hash %></td>
+    </tr>
+
+    <tr>
+      <td>포인트</td>
+      <td><%= form.number_field :reward %></td>
+    </tr>
   </table>
 
   <br>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "수정" %>
   </div>
 <% end %>
+<br>
+<div>
+  <%= link_to "돌아가기", user_path(@user) %>
+</div>

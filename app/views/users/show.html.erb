@@ -1,4 +1,4 @@
-<h2>UserInfo</h2>
+<h2>사용자 정보</h2>
 
 <table>
   <tr>
@@ -7,7 +7,7 @@
   </tr>
 
   <tr>
-    <td>Name</td>
+    <td>이름</td>
     <td><%= @user.name %></td>
   </tr>
 
@@ -17,20 +17,28 @@
   </tr>
 
   <tr>
-    <td>Reward</td>
+    <td>포인트</td>
     <td><%= @user.reward %></td>
   </tr>
 
   <tr>
-    <td>CreatedAt</td>
+    <td>생성일</td>
     <td><%= @user.created_at %></td>
   </tr>
 
   <tr>
-    <td>UpdatedAt</td>
+    <td>수정일</td>
     <td><%= @user.updated_at %></td>
   </tr>
 </table>
 
 <br>
-<a href="/users">Users</a>
+<% if current_admin.has_moderator? %>
+  <%= link_to "수정", edit_user_path(@user) %>
+  <%= link_to "삭제", user_path(@user), data: {
+    turbo_method: :delete,
+    turbo_confirm: "해당 사용자를 삭제하시겠습니까?"
+  } %>
+<% end %>
+
+<a href="/users">목록</a>

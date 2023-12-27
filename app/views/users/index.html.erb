@@ -1,8 +1,7 @@
-<h1>#Users</h1>
+<h1>#사용자 목록</h1>
+<p>안녕하세요, <%= current_admin.email %></p>
 
-<a href="/users/new">Enroll User</a>
-
-<p><%= "Empty.." unless @users.present? %></p>
+<p><%= "== 빈 목록 ==" unless @users.present? %></p>
 
 <ul>
   <% @users.each do |user| %>
@@ -12,4 +11,7 @@
   <% end %>
 </ul>
 
-<a href="/main">Main</a>
+<% if current_admin.has_moderator? %>
+  <a href="/users/new">유저 등록</a><br>
+<% end %>
+<a href="/main">관리자 목록</a>
