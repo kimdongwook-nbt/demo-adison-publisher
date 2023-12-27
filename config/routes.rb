@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admins, sign_out_via: [:get, :post]
 
-  # users
   resources :users
+  get "/main", to: "main#index"
+  get "/user_rewards", to: "user_reward#index"
 
   namespace :api do
     namespace :offerwall do
@@ -10,7 +11,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get "/main", to: "main#index"
   root "main#index"
 end

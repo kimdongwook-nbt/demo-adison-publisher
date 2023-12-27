@@ -1,17 +1,52 @@
 <h1>#사용자 목록</h1>
 <p>안녕하세요, <%= current_admin.email %></p>
 
-<p><%= "== 빈 목록 ==" unless @users.present? %></p>
+<div>
+  <%= form_tag("/users", method: :get) do %>
+    <%= label_tag("Email: ") %>
+    <%= text_field_tag(:email, params[:email]) %>
 
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.email, user %>
-    </li>
+    <%= label_tag("이름: ") %>
+    <%= text_field_tag(:name, params[:name]) %>
+
+    <%= label_tag("Hash: ") %>
+    <%= text_field_tag(:uid_hash, params[:uid_hash]) %>
+
+    <%= submit_tag("검색") %>
   <% end %>
-</ul>
+</div>
+
+<br>
+
+<% if @users.present? %>
+  <table>
+    <thead>
+    <tr>
+      <td>Email</td>
+      <td>이름</td>
+      <td>Hash</td>
+      <td>포인트</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.email, user %></td>
+        <td><%= user.name %></td>
+        <td><%= user.uid_hash %></td>
+        <td><%= user.reward %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>검색 결과가 없습니다.</p>
+<% end %>
+
+<br>
 
 <% if current_admin.has_moderator? %>
-  <a href="/users/new">유저 등록</a><br>
+  <a href="/users/new">유저 등록</a>&nbsp;
 <% end %>
+<a href="/user_rewards">유저 리워드 목록</a>&nbsp;
 <a href="/main">관리자 목록</a>

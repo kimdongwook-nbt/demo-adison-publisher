@@ -1,0 +1,69 @@
+<h1>#유저 리워드 목록</h1>
+<p>안녕하세요, <%= current_admin.email %></p>
+
+<div>
+  <%= form_tag("/user_rewards", method: :get) do %>
+    <%= label_tag("Trx_id: ") %>
+    <%= text_field_tag(:trx_id, params[:trx_id]) %>
+
+    <%= label_tag("click_key: ") %>
+    <%= text_field_tag(:click_key, params[:click_key]) %>
+
+    <%= label_tag("uid_hash: ") %>
+    <%= text_field_tag(:uid_hash, params[:uid_hash]) %>
+
+    <%= label_tag("ad_title: ") %>
+    <%= text_field_tag(:ad_title, params[:ad_title]) %>
+
+    <%= submit_tag("검색") %>
+  <% end %>
+</div>
+
+<br>
+
+<% if @user_rewards.present? %>
+  <table>
+    <thead>
+    <tr>
+      <td>Trx_id</td>
+      <td>click_key</td>
+      <td>uid_hash</td>
+      <td>advertising_id</td>
+      <td>client_platform_type</td>
+      <td>campaign_id</td>
+      <td>ad_id</td>
+      <td>event_code</td>
+      <td>ad_title</td>
+      <td>event_title</td>
+      <td>reward</td>
+      <td>language</td>
+      <td>country</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @user_rewards.each do |ur| %>
+      <tr>
+        <td><%= ur.trx_id %></td>
+        <td><%= ur.click_key %></td>
+        <td><%= ur.uid_hash %></td>
+        <td><%= ur.advertising_id %></td>
+        <td><%= ur.client_platform_type %></td>
+        <td><%= ur.campaign_id %></td>
+        <td><%= ur.ad_id %></td>
+        <td><%= ur.event_code %></td>
+        <td><%= ur.ad_title %></td>
+        <td><%= ur.event_title %></td>
+        <td><%= ur.reward %></td>
+        <td><%= ur.language %></td>
+        <td><%= ur.country %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>검색 결과가 없습니다.</p>
+<% end %>
+
+<br>
+
+<a href="/users">유저 목록</a>&nbsp;

@@ -2,6 +2,17 @@
 <span>안녕하세요, <%= current_admin.email %></span>
 
 <h3>관리자 목록</h3>
+
+<div>
+  <%= form_tag("/", method: :get) do %>
+    <%= label_tag("Email: ") %>
+    <%= text_field_tag(:email, params[:email]) %>
+    <%= submit_tag("검색") %>
+  <% end %>
+</div>
+
+<p><%= "검색 결과가 없습니다." unless @admins.present? %></p>
+
 <ul>
   <% @admins.each do |admin| %>
     <li>

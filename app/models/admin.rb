@@ -7,6 +7,16 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  class << self
+    def search_by_email(email)
+      if email
+        Admin.where("email like :email", { email: "%#{email}%" })
+      else
+        Admin.all
+      end
+    end
+  end
+
   def has_moderator?
     self.has_role?(:moderator)
   end

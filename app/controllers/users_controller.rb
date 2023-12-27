@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
+    conditions = search_params
+    @users = User.retrieve_by(conditions[:email], conditions[:name], conditions[:uid_hash])
   end
 
   def show
@@ -63,5 +64,9 @@ class UsersController < ApplicationController
 
   def user_update_params
     params.require(:user).permit(:name, :reward)
+  end
+
+  def search_params
+    params.permit(:email, :name, :uid_hash)
   end
 end
