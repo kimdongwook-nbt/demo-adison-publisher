@@ -1,0 +1,10 @@
+{
+  "id": "file:/success.json",
+  "type": "object",
+  "required": ["code", "message", "issued_key"],
+  "properties": {
+    "code": { "type":  "integer" },
+    "message": { "type":  "string" },
+    "issued_key": { "type": "string" }
+  }
+}
