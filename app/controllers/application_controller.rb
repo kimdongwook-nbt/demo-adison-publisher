@@ -1,14 +1,13 @@
 class ApplicationController < ActionController::Base
-
   def authenticate_hmac_headers
-    x_hmac_datetime = request.headers[:X_HMAC_DATETIME] ? request.headers[:X_HMAC_DATETIME] : request.headers[:HTTP_X_HMAC_DATETIME]
-    x_hmac_signature = request.headers[:X_HMAC_SIGNATURE] ? request.headers[:X_HMAC_SIGNATURE] : request.headers[:HTTP_X_HMAC_SIGNATURE]
+    x_hmac_datetime = request.headers[:X_HMAC_DATETIME] || request.headers[:HTTP_X_HMAC_DATETIME]
+    x_hmac_signature = request.headers[:X_HMAC_SIGNATURE] || request.headers[:HTTP_X_HMAC_SIGNATURE]
     query_string = request.headers[:QUERY_STRING]
-    raw_post_data = request.headers[:RAW_POST_DATA] ? request.headers[:RAW_POST_DATA] : request.headers[:HTTP_RAW_POST_DATA]
+    raw_post_data = request.headers[:RAW_POST_DATA] || request.headers[:HTTP_RAW_POST_DATA]
     request_method = request.headers[:REQUEST_METHOD]
     request_uri = request.headers[:REQUEST_URI]
 
-    unless x_hmac_datetime or x_hmac_signature or raw_post_data or request_method or request_uri
+    unless x_hmac_datetime || x_hmac_signature || raw_post_data || request_method || request_uri
       @valid_hmac = false
       return
     end
@@ -19,5 +18,4 @@ class ApplicationController < ActionController::Base
 
     @valid_hmac = is_valid
   end
-
 end

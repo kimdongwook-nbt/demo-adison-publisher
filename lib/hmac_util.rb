@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'cgi'
 require 'digest'
 require 'openssl'
@@ -49,12 +50,11 @@ class HmacUtil
   end
 
   def string_to_sign(method, uri, hmac_datetime, query_string, payload)
-    method + "\n" + uri + "\n" + hmac_datetime + "\n" + sorted_query_string(query_string) + "\n" + payload_hash(payload)
+    "#{method}\n#{uri}\n#{hmac_datetime}\n#{sorted_query_string(query_string)}\n#{payload_hash(payload)}"
   end
 
   def sign(string_to_sign)
     raw_hmac = OpenSSL::HMAC.hexdigest(@algorithm, @secret_key, string_to_sign)
     Base64.strict_encode64(raw_hmac)
   end
-
 end

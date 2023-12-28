@@ -3,12 +3,13 @@ module PubErrors
     attr_reader :code, :message
 
     def initialize(error)
+      super
       @code = error.code
       @message = error.message
     end
   end
 
-  class Unauthenticated < Base
+  class PubErrors::Unauthenticated < Base
     def initialize(error = Errors::HMAC_NOT_AUTHENTICATED)
       super(error)
     end

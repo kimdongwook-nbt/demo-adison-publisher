@@ -18,7 +18,7 @@ class Admin < ApplicationRecord
   end
 
   def has_moderator?
-    self.has_role?(:moderator)
+    has_role?(:moderator)
   end
 
   def add_reader_role

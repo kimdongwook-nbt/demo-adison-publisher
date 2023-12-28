@@ -1,6 +1,6 @@
 class Api::Offerwall::OfferwallController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:complete_campaign]
-  before_action :authenticate_hmac_headers, :only => [:complete_campaign]
+  skip_before_action :verify_authenticity_token, :only [:complete_campaign]
+  before_action :authenticate_hmac_headers, :only [:complete_campaign]
 
   def complete_campaign
     raise PubErrors::Unauthenticated.new unless @valid_hmac
@@ -17,13 +17,13 @@ class Api::Offerwall::OfferwallController < ApplicationController
       params[:ad_id],
       params[:event_code],
       params[:ad_title],
-      params[:event_title] ||= '',
       params[:reward],
       params[:language],
       params[:country],
+      params[:event_title]
     )
 
-    render json: { code: 200, message: 'success', issued_key: issued_key }
+    render json: { code: 200, message: 'success', issued_key: }
   rescue PubErrors::Base => e
     render json: { code: e.code, message: e.message }
   end
@@ -42,7 +42,7 @@ class Api::Offerwall::OfferwallController < ApplicationController
     return false unless params[:reward]
     return false unless params[:language]
     return false unless params[:country]
+
     true
   end
-
 end
