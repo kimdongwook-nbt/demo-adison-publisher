@@ -25,6 +25,7 @@ class Api::Offerwall::OfferwallController < ApplicationController
 
     render json: { code: 200, message: 'success', issued_key: }
   rescue PubErrors::Base => e
+    Rails.logger.warn("유저 리워드 적립 API 예외: #{e.message}")
     render json: { code: e.code, message: e.message }
   end
 
