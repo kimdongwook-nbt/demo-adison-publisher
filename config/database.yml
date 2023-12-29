@@ -22,6 +22,7 @@ development:
 
 test:
   <<: *default
+  database: test_demo_adison_publisher
 
 production:
   <<: *default
