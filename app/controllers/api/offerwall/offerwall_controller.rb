@@ -1,6 +1,6 @@
 class Api::Offerwall::OfferwallController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only [:complete_campaign]
-  before_action :authenticate_hmac_headers, :only [:complete_campaign]
+  skip_before_action :verify_authenticity_token, only: [:complete_campaign]
+  before_action :authenticate_hmac_headers, only: [:complete_campaign]
 
   def complete_campaign
     raise PubErrors::Unauthenticated.new unless @valid_hmac
