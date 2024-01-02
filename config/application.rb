@@ -26,5 +26,7 @@ module DemoAdisonPublisher
 
     config.autoload_paths << "#{Rails.root}/lib"
     config.time_zone = "Asia/Seoul"
+
+    config.cache_store = :memory_store, { size: 64.megabytes }
   end
 end

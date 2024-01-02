@@ -18,11 +18,19 @@ class Admin < ApplicationRecord
   end
 
   def has_moderator?
-    has_role?(:moderator)
+    admin_roles = fetch_or_save_roles { roles_name }
+    admin_roles.include?(:moderator.to_s)
   end
 
   def add_reader_role
     add_role(:reader)
+    fetch_or_save_roles { ['reader'] }
+  end
+
+  private
+
+  def fetch_or_save_roles(&)
+    Rails.cache.fetch("admin_#{id}_roles", expires_in: 12.hours, &)
   end
 
 end
