@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins, sign_out_via: [:get, :post]
+  devise_for :admins, sign_out_via: [:get, :delete]
 
   resources :users
   get "/main", to: "main#index"
