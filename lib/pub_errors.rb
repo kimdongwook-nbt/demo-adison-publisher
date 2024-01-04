@@ -27,8 +27,8 @@ module PubErrors
     end
   end
 
-  class DuplicatedTrxId < Base
-    def initialize(error = Errors::DUPLICATE_TRX_ID)
+  class DuplicatedRequest < Base
+    def initialize(error = Errors::DUPLICATED)
       super(error)
     end
   end
