@@ -33,7 +33,7 @@
 </table>
 
 <br>
-<% if current_admin.has_moderator? %>
+<% if current_admin.has_super_publisher? %>
   <%= link_to "수정", edit_user_path(@user) %>
   <%= link_to "삭제", user_path(@user), data: {
     turbo_method: :delete,

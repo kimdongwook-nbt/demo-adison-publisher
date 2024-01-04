@@ -11,20 +11,20 @@ class UsersController < ApplicationController
   end
 
   def new
-    return redirect_to "/users" unless current_admin.has_moderator?
+    return redirect_to "/users" unless current_admin.has_super_publisher?
 
     @user = User.new
   end
 
   def edit
-    return redirect_to "/users" unless current_admin.has_moderator?
+    return redirect_to "/users" unless current_admin.has_super_publisher?
 
     @user = User.find(params[:id])
     render json: { error: "Not found", status: 404 } unless @user.present?
   end
 
   def create
-    return render json: { error: "Not Authorized" }, status: :unauthorized unless current_admin.has_moderator?
+    return render json: { error: "Not Authorized" }, status: :unauthorized unless current_admin.has_super_publisher?
 
     @user = User.new(user_params)
     @user.uid_hash = SecureRandom.uuid
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    return render json: { error: "Not Authorized" }, status: :unauthorized unless current_admin.has_moderator?
+    return render json: { error: "Not Authorized" }, status: :unauthorized unless current_admin.has_super_publisher?
 
     @user = User.find(params[:id])
     if @user.update(user_update_params)
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    return render json: { error: "Not Authorized" }, status: :unauthorized unless current_admin.has_moderator?
+    return render json: { error: "Not Authorized" }, status: :unauthorized unless current_admin.has_super_publisher?
 
     @user = User.find(params[:id])
     @user.destroy

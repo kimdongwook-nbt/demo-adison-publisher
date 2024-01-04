@@ -1,6 +1,6 @@
 class Admin < ApplicationRecord
   rolify
-  after_create :add_reader_role
+  after_create :add_publisher_role
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -17,14 +17,14 @@ class Admin < ApplicationRecord
     end
   end
 
-  def has_moderator?
+  def has_super_publisher?
     admin_roles = fetch_or_save_roles { roles_name }
-    admin_roles.include?(:moderator.to_s)
+    admin_roles.include?(:super_publisher.to_s)
   end
 
-  def add_reader_role
-    add_role(:reader)
-    fetch_or_save_roles { ['reader'] }
+  def add_publisher_role
+    add_role(:publisher)
+    fetch_or_save_roles { ['publisher'] }
   end
 
   private
