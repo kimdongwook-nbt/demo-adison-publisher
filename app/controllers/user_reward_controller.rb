@@ -1,4 +1,6 @@
 class UserRewardController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     conditions = search_params
     @user_rewards = UserReward.retrieve_by(conditions[:trx_id], conditions[:click_key], conditions[:uid_hash], conditions[:ad_title], conditions[:country])
