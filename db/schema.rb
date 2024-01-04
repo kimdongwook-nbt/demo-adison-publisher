@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_27_155723) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_04_020525) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,8 +59,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_27_155723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.string "issued_key"
-    t.datetime "issued_reward_at"
+    t.string "issued_key", null: false
+    t.datetime "issued_reward_at", null: false
+    t.index ["click_key", "event_code"], name: "index_user_rewards_on_click_key_and_event_code", unique: true
+    t.index ["trx_id"], name: "index_user_rewards_on_trx_id", unique: true
     t.index ["user_id"], name: "index_user_rewards_on_user_id"
   end
 

@@ -1,6 +1,12 @@
 class UserReward < ApplicationRecord
   belongs_to :user
 
+  validates :trx_id, :click_key, :uid_hash, :advertising_id, :client_platform_type, :campaign_id,
+            :ad_id, :event_code, :ad_title, :reward, :language, :country, :issued_key, :issued_reward_at,
+            presence: true
+  validates :trx_id, uniqueness: true
+  validates :click_key, uniqueness: { scope: :event_code, message: 'click_key and event_code must be unique' }
+
   class << self
     def retrieve_by(trx_id, click_key, uid_hash, ad_title)
       query = UserReward.order(id: :desc)
