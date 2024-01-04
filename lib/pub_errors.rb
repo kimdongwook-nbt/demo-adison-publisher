@@ -9,7 +9,7 @@ module PubErrors
     end
   end
 
-  class PubErrors::Unauthenticated < Base
+  class Unauthenticated < Base
     def initialize(error = Errors::HMAC_NOT_AUTHENTICATED)
       super(error)
     end
