@@ -13,6 +13,4 @@ module Errors
   INVALID_UID = ErrorItem.new("103", "올바르지 않은 uid")
   DUPLICATED = ErrorItem.new("104", "중복 호출")
   BAD_REQUEST = ErrorItem.new("400", "기타 오류")
-  INVALID_REWARD = ErrorItem.new("400", "invalid reward")
-  INVALID_CLIENT_PLATFORM_TYPE = ErrorItem.new("400", "invalid client_platform_type")
 end

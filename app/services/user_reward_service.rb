@@ -10,8 +10,8 @@ class UserRewardService
     user_reward.validate
 
     raise PubErrors::DuplicatedRequest.new if is_duplicated_request?(user_reward)
-    raise PubErrors::BadRequest.new(Errors::INVALID_REWARD) if is_reward_less_than_equal_0?(user_reward)
-    raise PubErrors::BadRequest.new(Errors::INVALID_CLIENT_PLATFORM_TYPE) unless is_valid_client_platform_type?(user_reward)
+    raise PubErrors::BadRequest.new if is_reward_less_than_equal_0?(user_reward)
+    raise PubErrors::BadRequest.new unless is_valid_client_platform_type?(user_reward)
 
     User.transaction do
       user.add_reward(reward)

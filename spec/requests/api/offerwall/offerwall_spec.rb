@@ -139,7 +139,7 @@ RSpec.describe "Api::Offerwall::Offerwalls", type: :request do
       # then
       expect(response.status).to eq 200
       expect(response.body).to match(/400/)
-      expect(response.body).to match(/invalid reward/)
+      expect(response.body).to match(/기타 오류/)
       expect(User.find_by_email("user@mail.com").reward).to eq 0
     end
 
@@ -162,7 +162,7 @@ RSpec.describe "Api::Offerwall::Offerwalls", type: :request do
       # then
       expect(response.status).to eq 200
       expect(response.body).to match(/400/)
-      expect(response.body).to match(/invalid client_platform_type/)
+      expect(response.body).to match(/기타 오류/)
       expect(User.find_by_email("user@mail.com").reward).to eq 0
     end
   end
