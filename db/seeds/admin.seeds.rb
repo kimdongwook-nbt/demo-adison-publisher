@@ -15,4 +15,4 @@ admin2 = Admin.where(email: "admin2@nbt.com").first_or_create!(
   created_at: Time.zone.now,
   updated_at: Time.zone.now
 )
-admin2.add_role :developer
+admin2.add_role :publisher
