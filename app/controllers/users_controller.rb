@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def show
     # @user = User.find(params[:id])
     @user = User.find_by_id_with_rewards(params[:id])
+    not_found_method unless @user
   end
 
   def new
