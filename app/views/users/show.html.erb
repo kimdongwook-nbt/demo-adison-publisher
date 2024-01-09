@@ -32,6 +32,11 @@
   </tr>
 </table>
 
+<% unless @user.user_rewards.empty? %>
+  <h3>리워드 지급 정보</h3>
+  <%= render 'user_reward/user_rewards', user_rewards: @user.user_rewards %>
+<% end %>
+
 <br>
 <% if current_admin.has_super_publisher? %>
   <%= link_to "수정", edit_user_path(@user) %>
