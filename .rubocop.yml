@@ -7,7 +7,6 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'spec/**/*'
     - 'db/**/*'
     - 'test/**/*'
     - 'config/**/*'
