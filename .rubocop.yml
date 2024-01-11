@@ -33,104 +33,104 @@ AllCops:
 
 ### Global .rubocop.yml
 
-Layout/CommentIndentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/models/**/*'
-Layout/LineLength:
-  Enabled: false
-Lint/DuplicateBranch:
-  Exclude:
-    - 'spec/**/*'
-Lint/EmptyBlock:
-  Exclude:
-    - 'spec/factories/**/*'
-Style/AsciiComments:
-  Enabled: false
-Style/BarePercentLiterals:
-  Enabled: false
-Style/BlockComments:
-  Exclude:
-    - 'spec/**/*'
-Style/CaseLikeIf:
-  Enabled: false
-Style/Documentation:
-  Enabled: false
-Style/EmptyMethod:
-  Enabled: false
-Style/FormatStringToken:
-  Enabled: false
-Style/GlobalVars:
-  Enabled: false
-Style/NumericPredicate:
-  Enabled: false
-Style/NumericLiterals:
-  Enabled: false
-Style/NumericLiteralPrefix:
-  Enabled: false
-Style/RaiseArgs:
-  Enabled: false
-Style/CombinableLoops:
-  Exclude:
-    - 'spec/**/*'
-Style/StringLiterals:
-  Enabled: false
-Style/RedundantPercentQ:
-  Enabled: false
-Style/MutableConstant:
-  Enabled: false
-Style/FrozenStringLiteralComment:
-  Enabled: false
-Style/ClassAndModuleChildren:
-  Enabled: false
-Metrics/BlockLength:
-  Enabled: false
-Metrics/MethodLength:
-  Enabled: false
-Metrics/AbcSize:
-  Enabled: false
-Metrics/ClassLength:
-  Enabled: false
-Metrics/ModuleLength:
-  Enabled: false
-Metrics/ParameterLists:
-  Enabled: false
-Metrics/CyclomaticComplexity:
-  Enabled: false
-Metrics/PerceivedComplexity:
-  Enabled: false
-Naming/PredicateName:
-  Enabled: false
-Naming/MethodParameterName:
-  Enabled: false
-Performance/Casecmp:
-  Enabled: false
-Rails/Blank:
-  Enabled: false
-Rails/Date:
-  Enabled: false
-Rails/DynamicFindBy:
-  Exclude:
-    - 'app/lib/**/*'
-    - 'spec/lib/**/*'
-Rails/HasAndBelongsToMany:
-  Enabled: false
-Rails/HasManyOrHasOneDependent:
-  Enabled: false
-Rails/InverseOf:
-  Enabled: false
-Rails/Output:
-  Enabled: false
-Rails/OutputSafety:
-  Enabled: false
-Rails/TimeZone:
-  Enabled: false
-Rails/UnknownEnv:
-  Environments:
-    - test
-    - development
-    - sandbox
-    - stage
-    - production
-Style/MissingRespondToMissing:
-  Enabled: false
+#Layout/CommentIndentation:
+#  Exclude:
+#    - 'spec/**/*'
+#    - 'app/models/**/*'
+#Layout/LineLength:
+#  Enabled: false
+#Lint/DuplicateBranch:
+#  Exclude:
+#    - 'spec/**/*'
+#Lint/EmptyBlock:
+#  Exclude:
+#    - 'spec/factories/**/*'
+#Style/AsciiComments:
+#  Enabled: false
+#Style/BarePercentLiterals:
+#  Enabled: false
+#Style/BlockComments:
+#  Exclude:
+#    - 'spec/**/*'
+#Style/CaseLikeIf:
+#  Enabled: false
+#Style/Documentation:
+#  Enabled: false
+#Style/EmptyMethod:
+#  Enabled: false
+#Style/FormatStringToken:
+#  Enabled: false
+#Style/GlobalVars:
+#  Enabled: false
+#Style/NumericPredicate:
+#  Enabled: false
+#Style/NumericLiterals:
+#  Enabled: false
+#Style/NumericLiteralPrefix:
+#  Enabled: false
+#Style/RaiseArgs:
+#  Enabled: false
+#Style/CombinableLoops:
+#  Exclude:
+#    - 'spec/**/*'
+#Style/StringLiterals:
+#  Enabled: false
+#Style/RedundantPercentQ:
+#  Enabled: false
+#Style/MutableConstant:
+#  Enabled: false
+#Style/FrozenStringLiteralComment:
+#  Enabled: false
+#Style/ClassAndModuleChildren:
+#  Enabled: false
+#Metrics/BlockLength:
+#  Enabled: false
+#Metrics/MethodLength:
+#  Enabled: false
+#Metrics/AbcSize:
+#  Enabled: false
+#Metrics/ClassLength:
+#  Enabled: false
+#Metrics/ModuleLength:
+#  Enabled: false
+#Metrics/ParameterLists:
+#  Enabled: false
+#Metrics/CyclomaticComplexity:
+#  Enabled: false
+#Metrics/PerceivedComplexity:
+#  Enabled: false
+#Naming/PredicateName:
+#  Enabled: false
+#Naming/MethodParameterName:
+#  Enabled: false
+#Performance/Casecmp:
+#  Enabled: false
+#Rails/Blank:
+#  Enabled: false
+#Rails/Date:
+#  Enabled: false
+#Rails/DynamicFindBy:
+#  Exclude:
+#    - 'app/lib/**/*'
+#    - 'spec/lib/**/*'
+#Rails/HasAndBelongsToMany:
+#  Enabled: false
+#Rails/HasManyOrHasOneDependent:
+#  Enabled: false
+#Rails/InverseOf:
+#  Enabled: false
+#Rails/Output:
+#  Enabled: false
+#Rails/OutputSafety:
+#  Enabled: false
+#Rails/TimeZone:
+#  Enabled: false
+#Rails/UnknownEnv:
+#  Environments:
+#    - test
+#    - development
+#    - sandbox
+#    - stage
+#    - production
+#Style/MissingRespondToMissing:
+#  Enabled: false
