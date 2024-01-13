@@ -1,12 +1,12 @@
 class Api::Offerwall::OfferwallController < ApplicationController
+  prepend_before_action :load_user_reward_service
   skip_before_action :verify_authenticity_token, only: [:complete_campaign]
 
   def complete_campaign
     raise PubErrors::Unauthenticated.new unless validate_hmac_headers
     raise PubErrors::InvalidParameter.new unless validate_required_params
 
-    user_reward_service = UserRewardService.new
-    issued_key = user_reward_service.pay_reward_to_user(
+    issued_key = @user_reward_service.pay_reward_to_user(
       trx_id: params[:trx_id],
       click_key: params[:click_key],
       uid: params[:uid],

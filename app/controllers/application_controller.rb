@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ServiceLoader
+
   def validate_hmac_headers
     x_hmac_datetime = request.headers[:X_HMAC_DATETIME] || request.headers[:HTTP_X_HMAC_DATETIME]
     x_hmac_signature = request.headers[:X_HMAC_SIGNATURE] || request.headers[:HTTP_X_HMAC_SIGNATURE]
