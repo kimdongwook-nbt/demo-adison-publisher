@@ -7,19 +7,19 @@ class Api::Offerwall::OfferwallController < ApplicationController
 
     user_reward_service = UserRewardService.new
     issued_key = user_reward_service.pay_reward_to_user(
-      params[:trx_id],
-      params[:click_key],
-      params[:uid],
-      params[:advertising_id],
-      params[:client_platform_type],
-      params[:campaign_id],
-      params[:ad_id],
-      params[:event_code],
-      params[:ad_title],
-      params[:reward],
-      params[:language],
-      params[:country],
-      params[:event_title]
+      trx_id: params[:trx_id],
+      click_key: params[:click_key],
+      uid: params[:uid],
+      advertising_id: params[:advertising_id],
+      client_platform_type: params[:client_platform_type],
+      campaign_id: params[:campaign_id],
+      ad_id: params[:ad_id],
+      event_code: params[:event_code],
+      ad_title: params[:ad_title],
+      reward: params[:reward],
+      language: params[:language],
+      country: params[:country],
+      event_title: params[:event_title]
     )
 
     render json: { code: 200, message: 'success', issued_key: }
@@ -31,17 +31,12 @@ class Api::Offerwall::OfferwallController < ApplicationController
   private
 
   def validate_required_params
-    return false unless params[:trx_id]
-    return false unless params[:click_key]
-    return false unless params[:uid]
-    return false unless params[:advertising_id]
-    return false unless params[:client_platform_type]
-    return false unless params[:campaign_id]
-    return false unless params[:ad_id]
-    return false unless params[:ad_title]
-    return false unless params[:reward]
-    return false unless params[:language]
-    return false unless params[:country]
+    required_param_names = %w[trx_id click_key uid advertising_id client_platform_type
+                              campaign_id ad_id ad_title reward language country]
+
+    params.each do |key, value|
+      return false if required_param_names.include?(key) && !value
+    end
 
     true
   end

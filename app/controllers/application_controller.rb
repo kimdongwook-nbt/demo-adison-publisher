@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
     request_method = request.headers[:REQUEST_METHOD]
     request_uri = request.headers[:REQUEST_URI]
 
-    return false unless x_hmac_datetime || x_hmac_signature || raw_post_data || request_method || request_uri
+    return false if [x_hmac_datetime, x_hmac_signature, raw_post_data, request_method, request_uri].any?(&:nil?)
 
     hmac_util = HmacUtil.new(HmacUtil::SupportAlgorithm::SHA256)
     is_valid = hmac_util.valid?(request_method, request_uri, x_hmac_datetime, query_string, raw_post_data, x_hmac_signature)
-    logger.warn("Invalid HMAC Signature") unless is_valid
+    logger.warn('Invalid HMAC Signature') unless is_valid
 
     is_valid
   end
