@@ -15,8 +15,8 @@ class UserRewardService
 
     User.transaction do
       user.add_reward(reward)
-      user.append_user_reward(user_reward.attributes)
-      user.save
+      user.append_user_reward!(user_reward.attributes)
+      user.save!
     end
 
     user_reward.issued_key

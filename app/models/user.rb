@@ -25,7 +25,7 @@ class User < ApplicationRecord
     self.updated_at = Time.zone.now
   end
 
-  def append_user_reward(reward)
-    user_rewards.create(reward)
+  def append_user_reward!(reward)
+    user_rewards.create!(reward)
   end
 end
