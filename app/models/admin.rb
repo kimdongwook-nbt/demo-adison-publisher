@@ -19,12 +19,12 @@ class Admin < ApplicationRecord
 
   def has_super_publisher?
     admin_roles = fetch_or_save_roles { roles_name }
-    admin_roles.include?(:super_publisher.to_s)
+    admin_roles.include?(DemoPublisherRole::SUPER_PUBLISHER)
   end
 
   def add_publisher_role
-    add_role(:publisher)
-    fetch_or_save_roles { ['publisher'] }
+    add_role(DemoPublisherRole::PUBLISHER)
+    fetch_or_save_roles { [DemoPublisherRole::PUBLISHER] }
   end
 
   private

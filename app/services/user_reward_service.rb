@@ -59,7 +59,10 @@ class UserRewardService
   end
 
   def valid_client_platform_type?(user_reward)
-    return false unless [1, 2].include?(user_reward.client_platform_type)
+    return false unless [
+      ClientPlatformType::ANDROID,
+      ClientPlatformType::IOS
+    ].include?(user_reward.client_platform_type)
 
     true
   end
