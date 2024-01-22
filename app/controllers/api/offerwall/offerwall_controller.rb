@@ -36,8 +36,8 @@ class Api::Offerwall::OfferwallController < ApplicationController
     required_param_names = %w[trx_id click_key uid advertising_id client_platform_type
                               campaign_id ad_id ad_title reward language country]
 
-    params.each do |key, value|
-      return false if required_param_names.include?(key) && !value
+    required_param_names.each do |required_param_name|
+      return false if params[required_param_name].nil?
     end
 
     true
