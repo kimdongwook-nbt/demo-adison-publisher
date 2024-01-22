@@ -24,7 +24,7 @@ class Admin < ApplicationRecord
   end
 
   def has_super_publisher?
-    admin_roles = fetch_or_save_roles { roles_name }
+    admin_roles = fetch_roles { roles_name }
     admin_roles.include?(DemoPublisherRole::SUPER_PUBLISHER)
   end
 
@@ -33,7 +33,7 @@ class Admin < ApplicationRecord
   end
 
   def update_role_cache
-    fetch_or_save_roles { roles_name }
+    fetch_roles { roles_name }
   end
 
   def remove_role_cache
@@ -42,8 +42,8 @@ class Admin < ApplicationRecord
 
   private
 
-  def fetch_or_save_roles(&)
-    Rails.cache.fetch(format(AdminRoleCache::KEY, id:), expires_in: 12.hours, &)
+  def fetch_roles(&)
+    Rails.cache.fetch(format(AdminRoleCache::KEY, id:), expires_in: 30.minutes, &)
   end
 
 end
